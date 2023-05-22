@@ -7,7 +7,7 @@
       "uid": 4911593371711,
       "key": "ServicesDeva",
       "prompt": {
-        "emoji": "🛠️",
+        "emoji": "🛠️ ",
         "text": "ServicesDeva",
         "colors": {
           "label": {
@@ -28,7 +28,7 @@
       },
       "profile": {
         "name": "Services Deva",
-        "describe": "The Services Deva",
+        "describe": "The Services Deva serves",
         "emoji": "/public/devas/deva/emoji.png",
         "avatar": "/public/devas/deva/avatar.png",
         "background": "/public/devas/deva/background.png",
