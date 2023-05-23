@@ -5,17 +5,17 @@ p:Copyright (c)2023 Quinn Michaels
 p:This is the main help file for Services Deva. Providing support to deva.world.
 
 id: 3340056917338
-key: ServicesDeva
+key: services
 name: Services Deva
 describe: Providing support to deva.world.
 
 ### Methods
 
-cmd:#ServicesDeva uid
+cmd:#services uid
 p:Generate a unique id from the Services Deva.
 
-cmd:#ServicesDeva status
+cmd:#services status
 p:Return the status for the Services Deva.
 
-cmd:#ServicesDeva help
+cmd:#services help
 p:Get help using the Services Deva
