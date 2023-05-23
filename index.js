@@ -1,6 +1,6 @@
 // Copyright (c)2023 Quinn Michaels
 // Services Deva
-
+// The Services Deva manages various service requests in deva.world.
 
 const fs = require('fs');
 const path = require('path');
