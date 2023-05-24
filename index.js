@@ -43,7 +43,18 @@ const SERVICES = new Deva({
   listeners: {},
   modules: {},
   deva: {},
-  func: {},
+  func: {
+    ser_question(packet) {
+      const agent = this.agent();
+      const services = this.services();
+      services.personal.answers.push(packet);
+    },
+    ser_answer(packet) {
+      const agent = this.agent();
+      const services = this.services();
+      services.personal.answers.push(packet);
+    },
+  },
   methods: {
     /**************
     method: uid
@@ -81,6 +92,15 @@ const SERVICES = new Deva({
         }).catch(reject);
       });
     }
+  },
+  onDone(data) {
+    this.listen('devacore:question', packet => {
+      if (packet.q.text.includes(this.vars.trigger)) return this.func.ser_question(packet);
+    });
+    this.listen('devacore:answer', packet => {
+      if (packet.a.text.includes(this.vars.trigger)) return this.func.ser_answer(packet);
+    });
+    return Promise.resolve(data);
   },
 });
 module.exports = SERVICES
