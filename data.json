@@ -11,23 +11,23 @@
         "text": "services",
         "colors": {
           "label": {
-            "R": 56,
-            "G": 232,
-            "B": 135
+            "R": 163,
+            "G": 163,
+            "B": 168
           },
           "text": {
-            "R": 56,
-            "G": 232,
-            "B": 135
+            "R": 240,
+            "G": 242,
+            "B": 136
           }
         }
       },
       "profile": {
         "name": "Services Deva",
         "describe": "The Services Deva serves",
-        "emoji": "/public/devas/deva/emoji.png",
-        "avatar": "/public/devas/deva/avatar.png",
-        "background": "/public/devas/deva/background.png",
+        "emoji": "/public/devas/services/emoji.png",
+        "avatar": "/public/devas/services/avatar.png",
+        "background": "/public/devas/services/background.png",
         "gender": "male",
         "voice": "Joey"
       }
