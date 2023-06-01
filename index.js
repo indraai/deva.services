@@ -53,6 +53,7 @@ const SERVICES = new Deva({
     describe: Return a system id to the user from the :name:.
     ***************/
     uid(packet) {
+      this.context('uid');
       return Promise.resolve({text:this.uid()});
     },
 
@@ -62,6 +63,7 @@ const SERVICES = new Deva({
     describe: Return the current status of the :name:.
     ***************/
     status(packet) {
+      this.context('status');
       return this.status();
     },
 
@@ -71,6 +73,7 @@ const SERVICES = new Deva({
     describe: The Help method returns the information on how to use the :name:.
     ***************/
     help(packet) {
+      this.context('help');
       return new Promise((resolve, reject) => {
         this.help(packet.q.text, __dirname).then(help => {
           return this.question(`#feecting parse ${help}`);
