@@ -1,21 +1,30 @@
-## Services Deva
+image: ::agent_avatar::
 
-p:Copyright (c)2023 Quinn Michaels
+## Services Deva Help
 
-p:This is the main help file for Services Deva. Providing support to deva.world.
+p:This is the main help file for Services Deva. :describe:
 
-id: 3340056917338
-key: services
-name: Services Deva
-describe: Providing support to deva.world.
+id: ::agent_id::
+key: #::agent_key::
+name: ::agent_name::
+emoji: ::agent_emoji::
+describe: ::agent_describe::
 
 ### Methods
 
-cmd:#services uid
+cmd:#security uid
 p:Generate a unique id from the Services Deva.
 
-cmd:#services status
+cmd:#security status
 p:Return the status for the Services Deva.
 
-cmd:#services help
+cmd:#security help
 p:Get help using the Services Deva
+
+---
+
+#color = ::agent_color::
+#bgcolor = ::agent_bgcolor::
+#bg = ::agent_background::
+
+copyright: (c)2023 Quinn Michaels

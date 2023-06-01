@@ -30,7 +30,6 @@ const SERVICES = new Deva({
     key: agent.key,
     describe: agent.describe,
     prompt: agent.prompt,
-    voice: agent.voice,
     profile: agent.profile,
     translate(input) {
       return input.trim();
@@ -44,16 +43,8 @@ const SERVICES = new Deva({
   modules: {},
   deva: {},
   func: {
-    ser_question(packet) {
-      const agent = this.agent();
-      const services = this.services();
-      services.personal.questions.push(packet);
-    },
-    ser_answer(packet) {
-      const agent = this.agent();
-      const services = this.services();
-      services.personal.answers.push(packet);
-    },
+    ser_question(packet) {return;},
+    ser_answer(packet) {return;},
   },
   methods: {
     /**************
