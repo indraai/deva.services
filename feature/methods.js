@@ -51,6 +51,7 @@ module.exports = {
   help(packet) {
     this.context('help');
     const {dir} = this.info();
+    console.log('INFO', this.info());
     return new Promise((resolve, reject) => {
       this.help(packet.q.text, dir).then(help => {
         return this.question(`#feecting parse ${help}`);

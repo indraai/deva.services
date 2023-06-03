@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/indraai/ServicesDeva#readme",
   "dependencies": {
-    "@indra.ai/deva": "^1.1.116"
+    "@indra.ai/deva": "^1.1.117"
   }
 }
