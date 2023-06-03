@@ -57,7 +57,7 @@ const SERVICES = new Deva({
     ***************/
     uid(packet) {
       this.context('uid');
-      return Promise.resolve({text:this.uid()});
+      return Promise.resolve(this.uid());
     },
     /**************
     method: status
@@ -66,7 +66,7 @@ const SERVICES = new Deva({
     ***************/
     status(packet) {
       this.context('status');
-      return this.status();
+      return Promise.resolve(this.status());
     },
     /**************
     method: help
