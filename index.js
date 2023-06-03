@@ -36,6 +36,9 @@ const SERVICES = new Deva({
     },
     parse(input) {
       return input.trim();
+    },
+    proecess(input) {
+      return input.trim();
     }
   },
   vars,
