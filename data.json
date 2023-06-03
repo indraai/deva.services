@@ -44,9 +44,12 @@
       },
       "trigger": "@SERVICES",
       "context": {
-        "uid": "Services Deva is making a uid",
-        "status": "Services Deva is returning a status",
-        "help": "Services Deva is asking for help"
+        "uid": "generating uid",
+        "status": "getting status",
+        "info": "getting info",
+        "feature": "accessing feature",
+        "issue": "has issues",
+        "help": "asking for help"
       }
     }
   }
