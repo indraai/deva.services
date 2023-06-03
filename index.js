@@ -39,12 +39,8 @@ const SERVICES = new Deva({
   },
   methods: {},
   onDone(data) {
-    this.listen('devacore:question', packet => {
-      if (packet.q.text.includes(this.vars.trigger)) return this.func.ser_question(packet);
-    });
-    this.listen('devacore:answer', packet => {
-      if (packet.a.text.includes(this.vars.trigger)) return this.func.ser_answer(packet);
-    });
+    this.listen('devacore:question', this.func.ser_question);
+    this.listen('devacore:answer', packet => this.func.ser_answer);
     return Promise.resolve(data);
   },
 });
