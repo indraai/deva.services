@@ -8,7 +8,6 @@ module.exports = {
     this.context('uid');
     return Promise.resolve(this.uid());
   },
-
   /**************
   method: status
   params: packet
@@ -18,7 +17,6 @@ module.exports = {
     this.context('status');
     return Promise.resolve(this.status());
   },
-
   /**************
   method: info
   params: packet
@@ -27,7 +25,6 @@ module.exports = {
   info(packet) {
     return Promise.resolve(this.info);
   },
-
   /**************
   method: issue
   params: packet
@@ -46,8 +43,6 @@ module.exports = {
       });
     });
   },
-
-
   /**************
   method: help
   params: packet
