@@ -34,13 +34,13 @@ const SERVICES = new Deva({
   modules: {},
   deva: {},
   func: {
-    ser_question(packet) {return;},
-    ser_answer(packet) {return;},
+    ser_question(opts) {return;},
+    ser_answer(opts) {return;},
   },
   methods: {},
   onDone(data) {
     this.listen('devacore:question', this.func.ser_question);
-    this.listen('devacore:answer', packet => this.func.ser_answer);
+    this.listen('devacore:answer', sthis.func.ser_answer);
     return Promise.resolve(data);
   },
 });
