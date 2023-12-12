@@ -2,8 +2,6 @@
 // Services Deva
 // The Services Deva manages various @SERVICES requests in deva.world.
 const Deva = require('@indra.ai/deva');
-const fs = require('fs');
-const path = require('path');
 const package = require('./package.json');
 const info = {
   id: package.id,
@@ -18,9 +16,7 @@ const info = {
   license: package.license,
   copyright: package.copyright,
 };
-const data_path = path.join(__dirname, 'data.json');
-const {agent,vars} = require(data_path).DATA;
-
+const {agent,vars} = require('./data.json').DATA;
 const SERVICES = new Deva({
   info,
   agent,
@@ -32,16 +28,10 @@ const SERVICES = new Deva({
   },
   listeners: {},
   modules: {},
-  deva: {},
-  func: {
-    ser_question(opts) {return;},
-    ser_answer(opts) {return;},
-  },
+  func: {},
   methods: {},
-  onDone(data) {
-    this.listen('devacore:question', this.func.ser_question);
-    this.listen('devacore:answer', sthis.func.ser_answer);
-    return Promise.resolve(data);
-  },
+  onError(err) {
+    console.log('ERR', err);
+  }
 });
 module.exports = SERVICES
