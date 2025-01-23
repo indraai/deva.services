@@ -4,7 +4,7 @@
   "copyright": "Copyright (c)2023 Quinn Michaels. All rights reserved.",
   "DATA": {
     "agent": {
-      "id": 3587189981506,
+      "id": 4855882658530,
       "key": "services",
       "model": "gpt3",
       "prompt": {
@@ -70,7 +70,9 @@
         "profile": "services",
         "max_tokens": 50,
         "words": 25,
-        "history": []
+        "history": [],
+        "max_chats": 10,
+        "page_token": ""
       },
       "ask": {
         "max_tokens": 500,

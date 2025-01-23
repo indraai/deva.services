@@ -1,10 +1,10 @@
-function buildProfile(profile) {
+function buildProfile(profile, type='assistant') {
   const _profile = [];
-  _profile.push(`::begin:profile`);
+  _profile.push(`::begin:${type}`);
   for (let x in profile) {
     _profile.push(`${x}: ${profile[x]}`);
   }
-  _profile.push(`::end:profile\n`);
+  _profile.push(`::end:${type}\n`);
   return _profile.join('\n');
 }
 module.exports = {
@@ -38,63 +38,6 @@ module.exports = {
       }).catch(err => {
         return this.error(err, packet, reject);
       })
-    });
-  },
-  live(packet) {
-    return new Promise((resolve, reject) => {
-      if (!this.vars.live) return resolve('NO LIVE');
-      const agent = this.agent();
-      const client = this.client();
-      const profile = buildProfile(agent.profile);
-      const data = {};
-      const text = [];
-
-      const msg = [
-        packet.q.text,
-        `important: Respond in ${this.vars.live.words} words or less.`,
-      ].join('\n');
-
-      this.question(`${this.askChr}docs view devas/${agent.key}:corpus`).then(corpus => {
-        data.corpus = corpus.a.data;
-
-        return this.question(`${this.askChr}open relay ${msg}`, {
-          model: agent.model || false,
-          profile,
-          corpus: corpus.a.text,
-          max_tokens: this.vars.ask.max_tokens,
-          history: this.vars.live.history.slice(-10),
-        });
-      }).then(chat => {
-        data.chat = chat.a.data.chat;
-
-        // memory event
-        this.talk('data:memory', {
-          id: chat.a.data.chat.id,
-          client,
-          agent,
-          q: packet.q.text,
-          a: chat.a.data.chat.text,
-          created: Date.now(),
-        });
-
-        this.vars.live.history.push({
-          role: chat.a.data.chat.role,
-          content: chat.a.data.chat.text,
-        });
-        text.push(chat.a.data.parsed);
-        return this.question(`${this.askChr}youtube chat:${this.vars.live.profile} ${chat.a.text.substr(0, 199)}`);
-      }).then(youtube => {
-        data.youtube = youtube.a.data;
-        return this.question(`${this.askChr}feecting parse ${text.join('\n')}`);
-      }).then(feecting => {
-        return resolve({
-          text: feecting.a.text,
-          html: feecting.a.html,
-          data,
-        });
-      }).catch(err => {
-        return this.error(packet, err, reject);
-      });
     });
   },
   comment(packet) {
@@ -151,7 +94,7 @@ module.exports = {
   params: packet
   describe: this method provides a global ask method to all agents.
   ***************/
-  ask(packet) {
+  'ask'(packet) {
     this.context('ask', packet.q.agent.name);
     this.action('feature', 'ask');
     return new Promise((resolve, reject) => {
@@ -184,6 +127,7 @@ module.exports = {
         this.state('get', 'ask:chat');
         return this.question(`${this.askChr}open relay ${msg}`, {
           model: agent.model || false,
+          user: buildProfile(client.profile, 'user'),
           corpus: doc.a.text,
           max_tokens: this.vars.ask.max_tokens,
           history: this.vars.ask.history.slice(-10),
@@ -191,7 +135,16 @@ module.exports = {
           askAgent,
         });
       }).then(chat => {
+
+        text.push(`::begin:${agent.key}:${chat.id}`);
         text.push(chat.a.data.parsed);
+        if (chat.a.text) {
+          text.push('::begin:buttons');
+          text.push(`button[🗣️ Speak]:${this.askChr}${agent.key} speak ${encodeURI(chat.a.text)}`);
+          text.push(`button[🎨 Art]:${this.askChr}${agent.key} art ${encodeURI(chat.a.text)}`);
+          text.push('::end:buttons');
+        }
+        text.push(`::end:${agent.key}:${chat.hash}`);
 
         // memory event
         this.talk('data:memory', {
@@ -203,19 +156,19 @@ module.exports = {
           created: Date.now(),
         });
 
-        if (chat.a.text) {
-          text.push('::begin:buttons');
-          text.push(`button[🗣️ Speak]:${this.askChr}${agent.key} speak ${encodeURI(chat.a.text)}`);
-          text.push(`button[🎨 Art]:${this.askChr}${agent.key} art ${encodeURI(chat.a.text)}`);
-          text.push('::end:buttons');
-        }
 
         data.chat = chat.a.data.chat;
 
         this.state('set', 'ask:history');
+
+        this.vars.ask.history.push({
+          role: 'user',
+          content: this.trimWords(chat.q.text, 100),
+        });
+
         this.vars.ask.history.push({
           role: chat.a.data.chat.role,
-          content: chat.a.data.chat.text,
+          content: this.trimWords(chat.a.data.chat.text, 100),
         });
 
         this.state('parse', 'ask:chat');
@@ -224,13 +177,148 @@ module.exports = {
         data.feecting = feecting.a.data;
         this.state('resolve', 'ask');
         return resolve({
-          text: feecting.a.text,
+          text: data.chat.text,
           html: feecting.a.html,
           data,
         });
       }).catch(err => {
         this.state('reject', 'ask');
-        console.log('ASK ERROR', err);
+        return this.error(packet, err, reject);
+      });
+    });
+  },
+
+  live(packet) {
+    return new Promise((resolve, reject) => {
+      if (!this.vars.live) return resolve('NO LIVE');
+
+      const agent = this.agent();
+      const client = this.client();
+      const info = this.info();
+      const profile = buildProfile(agent.profile);
+      const data = {};
+      let text, corpus;
+
+      this.state('get', 'live:help');
+
+      this.help('main', info.dir).then(help => {
+        this.action('parse', 'ask:help');
+        return this.question(`${this.askChr}feecting parse ${help}`);
+
+      }).then(doc => {
+        data.corpus = doc.a.data;
+        corpus = doc.a.text;
+
+        this.state('set', 'chat message');
+        const msg = [
+          packet.q.text,
+          `important: Youtube chat has strict requirements, so please respond in ${this.vars.live.words} words or less.`,
+        ].join('\n');
+
+        this.action('get', 'open relay');
+
+        return this.question(`${this.askChr}open relay ${msg}`, {
+          model: agent.model || false,
+          profile,
+          corpus,
+          max_tokens: this.vars.live.max_tokens,
+          history: this.vars.live.history.slice(-10),
+        });
+
+      }).then(chat => {
+        console.log('CHAT RESPONSE... ', JSON.stringify(chat, null, 2));
+        this.state('set', 'chat data');
+        data.chat = chat.a.data.chat;
+        text = chat.a.data.parsed;
+
+        this.action('talk', 'data:memory');
+        // memory event
+        this.talk('data:memory', {
+          id: chat.a.data.chat.id,
+          client,
+          agent,
+          q: packet.q.text,
+          a: chat.a.data.chat.text,
+          created: Date.now(),
+        });
+
+        this.state('set', 'history:user');
+        this.vars.live.history.push({
+          role: 'user',
+          content: chat.q.text,
+        });
+
+        this.state('set', `history:${chat.a.data.chat.role}`);
+        this.vars.live.history.push({
+          role: chat.a.data.chat.role,
+          content: chat.a.data.chat.text,
+        });
+
+        this.action('send', `chat:${this.vars.live.profile}`);
+        return this.question(`${this.askChr}youtube chat:${this.vars.live.profile} ${chat.a.text.substr(0, 199)}`);
+
+      }).then(youtube => {
+        data.youtube = youtube.a.data;
+        this.action('parse', 'Youtube response');
+        return this.question(`${this.askChr}feecting parse ${text}`);
+
+      }).then(feecting => {
+        this.state('resolve', 'live');
+        return resolve({
+          text: feecting.a.text,
+          html: feecting.a.html,
+          data,
+        });
+
+      }).catch(err => {
+        this.state('reject', 'live');
+        console.log('LIVE ERROR', err);
+        return this.error(packet, err, reject);
+      });
+    });
+  },
+  /**************
+  method: livechat
+  params: packet
+  describe: Get the latest chats from a youtube stream and chat about it.
+  ***************/
+  livechat(packet) {
+    return new Promise((resolve, reject) => {
+      if (!this.vars.live) return resolve('NO LIVE');
+      const data = {};
+      this.action('get', 'Youtube chats');
+      this.question(`${this.askChr}youtube chats:${this.vars.live.max_chats}:${this.vars.live.page_token}`).then(chats => {
+
+        data.chats = chats.a.data;
+        this.vars.live.page_token = chats.a.data.messages.nextPageToken;
+        this.state('set', 'chat items');
+
+        const hasItems = chats.a.data.messages.items.length ? true : false;
+        const items = chats.a.data.messages.items.map(item => {
+          return `@${item.authorDetails.displayName}: ${item.snippet.displayMessage}`;
+        }).join('\n');
+
+        this.state('set', 'chat message');
+        const msg = ['::begin:chats'];
+        if (hasItems) {
+          msg.push(items);
+        }
+        msg.push(`${packet.q.client.profile.name}: ${packet.q.text}`);
+        msg.push('::end:chats');
+
+        this.action('get', 'open relay');
+
+        return this.methods.live(packet);
+      }).then(chat => {
+        this.state('resolve', 'live');
+        return resolve({
+          text: chat.text,
+          html: chat.html,
+          data: chat.data,
+        });
+      }).catch(err => {
+        this.state('reject', 'livechats');
+        console.log('LIVEchats ERROR', err);
         return this.error(packet, err, reject);
       });
     });
@@ -247,19 +335,14 @@ module.exports = {
 
       const data = {};
       const agent = this.agent();
+      const profile = buildProfile(agent.profile, 'assistant');
       const client = this.client();
+      const user = buildProfile(client.profile, 'user');
       const info = this.info();
       let corpus = false;
 
       this.state('set', 'docs:text');
-      const text = [
-        `::begin:user:${client.id}`,
-        `id: ${client.id}`,
-        `name: ${client.profile.nickname}`,
-        `fullname: ${client.profile.name}`,
-        `date: ${this.formatDate(Date.now(), 'long', true)}`,
-        `::end:user`,
-      ];
+      const text = [];
 
       this.state('get', 'docs:help');
       this.help('main', info.dir).then(corpus => {
@@ -277,9 +360,12 @@ module.exports = {
         text.push(`::begin:document:${doc.id}`);
         text.push(doc.a.text);
         text.push(`::end:document:${this.hash(doc.a.text)}`);
+
         return this.question(`${this.askChr}open relay ${text.join('\n')}`, {
           model: agent.model || false,
           corpus,
+          profile,
+          user,
           max_tokens: this.vars.ask.max_tokens,
           history: this.vars.ask.history.slice(-10),
           memory: agent.key,
@@ -317,79 +403,75 @@ module.exports = {
   },
 
   /**************
-  method: livechat
+  method: veda
   params: packet
-  describe: this method provides a global ask method to all agents to respond to Youtube live streams.
+  describe: send a veda hymn to the deva.
   ***************/
-  livechat(packet) {
-    this.action('feature', 'ask');
+  veda(packet) {
+    this.action('feature', 'hymn');
     return new Promise((resolve, reject) => {
-      if (!this.vars.ask) return resolve('NO ASK');
-      const text = [];
+
       const data = {};
       const agent = this.agent();
+      const profile = buildProfile(agent.profile, 'assistant');
       const client = this.client();
+      const user = buildProfile(client.profile, 'user');
       const info = this.info();
-      const {admin} = this.services().global;
+      let corpus = false;
 
-      this.state('set', 'message');
-      const msg = [
-        `info: We are reviewing the latest chats from our live stream.`,
-      ];
-
-      // get the agent main help file for teir corpus.
-      this.state('get', 'livechat:chats');
-      this.question(`${this.askChar}youtube chats:10`).then(chats => {
-        data.youtube = chats.a.data;
-        console.log('CHATS LIVE', chats.a.data);
-        msg.push(chats.a.text);
-        return this.help('main', info.dir);
-      }).then(corpus => {
-        this.action('parse', 'livechat:help');
+      this.state('get', 'agent:help');
+      this.help('main', info.dir).then(corpus => {
+        this.action('parse', 'docs:corpus');
         return this.question(`${this.askChr}feecting parse ${corpus}`);
-      }).then(doc => {
-        data.corpus = doc.a.data;
-        this.state('get', 'livechat:chat');
-        return this.question(`${this.askChr}open relay ${msg}`, {
+      }).then(_corpus => {
+        corpus = _corpus.a.text;
+        data.corpus = _corpus.a.data;
+        this.state('get', 'veda:hymn');
+        return this.question(`${this.askChr}veda hymn ${packet.q.meta.params[1]}`);
+      }).then(hymn => {
+        data.hymn = hymn.a.data;
+        const text = [
+          hymn.a.text,
+          `---`,
+          `note: ${packet.q.text}`,
+        ].join('\n');
+        return this.question(`${this.askChr}open relay ${text}`, {
           model: agent.model || false,
-          corpus: doc.a.text,
+          corpus,
+          profile,
+          user,
           max_tokens: this.vars.ask.max_tokens,
-          history: this.vars.ask.history.slice(-5),
+          history: this.vars.ask.history.slice(-10),
+          memory: agent.key,
+          askAgent: false,
         });
       }).then(chat => {
-        text.push(chat.a.data.parsed);
-        if (chat.a.text) {
-          text.push('::begin:buttons');
-          text.push(`button[🗣️ Speak]:${this.askChr}${agent.key} speak ${encodeURI(chat.a.text)}`);
-          text.push(`button[🎨 Art]:${this.askChr}${agent.key} art ${encodeURI(chat.a.text)}`);
-          text.push('::end:buttons');
-        }
-
-        data.chat = chat.a.data.chat;
-
-        this.state('set', 'ask:history');
-        this.vars.ask.history.push({
-          role: chat.a.data.chat.role,
-          content: chat.a.data.chat.text,
-        });
-
-        this.state('parse', 'ask:chat');
-        return this.question(`${this.askChr}feecting parse ${text.join('\n')}`);
+        data.chat = chat.a.data;
+        this.state('parse', 'hymn:chat');
+        const msg = [
+          chat.a.data.parsed,
+          '::begin:buttons',
+          `button[🗣️ Speak]:${this.askChr}${agent.key} speak ${encodeURI(chat.a.text)}`,
+          `button[🎨 Art]:${this.askChr}${agent.key} art ${encodeURI(chat.a.text)}`,
+          '::end:buttons',
+        ].join('\n');
+        return this.question(`${this.askChr}feecting parse ${msg}`);
       }).then(feecting => {
         data.feecting = feecting.a.data;
-        this.state('resolve', 'ask');
+        this.state('resolve', 'hymn');
         return resolve({
           text: feecting.a.text,
           html: feecting.a.html,
           data,
         });
       }).catch(err => {
-        this.state('reject', 'ask');
-        console.log('ASK ERROR', err);
-        return this.error(packet, err, reject);
+        this.state('reject', 'hymn');
+        console.log('HYMN feature ERROR', err);
+        return this.error(err, packet, reject);
       });
     });
   },
+
 
   /**************
   method: speak
