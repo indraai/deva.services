@@ -1,7 +1,7 @@
 {
   "id": 4855882658530,
-  "name": "@indra.ai/servicesdeva",
-  "version": "0.0.38",
+  "name": "@indra.ai/deva.services",
+  "version": "0.0.1",
   "author": "Quinn Michaels",
   "license": "MIT",
   "copyright": "2023",
@@ -12,17 +12,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/indraai/ServicesDeva.git"
+    "url": "git+https://github.com/indraai/deva.services.git"
   },
   "keywords": [
     "Services",
     "Deva",
-    "deva.world"
+    "Deva.world",
+    "Deva.cloud",
+    "Deva.space"
   ],
   "bugs": {
-    "url": "https://github.com/indraai/ServicesDeva/issues"
+    "url": "https://github.com/indraai/deva.services/issues"
   },
-  "homepage": "https://github.com/indraai/ServicesDeva#readme",
+  "homepage": "https://deva.space/services",
   "dependencies": {
     "@indra.ai/deva": "^1.2.21"
   }
