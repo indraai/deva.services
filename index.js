@@ -1,22 +1,30 @@
-// Copyright (c)2023 Quinn Michaels
+// Copyright (c)2025 Quinn Michaels
 // Services Deva
-// The Services Deva manages various @SERVICES requests in deva.world.
-const Deva = require('@indra.ai/deva');
-const package = require('./package.json');
+// The Services Deva manages various Services requests in deva.world.
+import Deva from '@indra.ai/deva';
+import pkg from './package.json' with {type:'json'};
+
+import data from './data.json' with {type:'json'};
+const {agent,vars} = data.DATA;
+
+// set the __dirname
+import {dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';    
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const info = {
-  id: package.id,
-  name: package.name,
-  describe: package.description,
-  version: package.version,
+  id: pkg.id,
+  name: pkg.name,
+  describe: pkg.description,
+  version: pkg.version,
   dir: __dirname,
-  url: package.homepage,
-  git: package.repository.url,
-  bugs: package.bugs.url,
-  author: package.author,
-  license: package.license,
-  copyright: package.copyright,
+  url: pkg.homepage,
+  git: pkg.repository.url,
+  bugs: pkg.bugs.url,
+  author: pkg.author,
+  license: pkg.license,
+  copyright: pkg.copyright,
 };
-const {agent,vars} = require('./data.json').DATA;
 const SERVICES = new Deva({
   info,
   agent,
@@ -34,4 +42,4 @@ const SERVICES = new Deva({
     console.log('ERR', err);
   }
 });
-module.exports = SERVICES
+export default SERVICES
