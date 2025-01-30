@@ -1,6 +1,6 @@
 // Copyright (c)2025 Quinn Michaels
 // Services Deva
-// The Services Deva manages various Services requests in deva.world.
+// The Services Deva manages various Services in Deva.space, Deva.cloud, and Deva.world.
 import Deva from '@indra.ai/deva';
 import pkg from './package.json' with {type:'json'};
 

@@ -8,7 +8,7 @@
       "key": "services",
       "model": "gpt3",
       "prompt": {
-        "emoji": "🛠️ ",
+        "emoji": "🛠️",
         "text": "Services",
         "colors": {
           "label": {
