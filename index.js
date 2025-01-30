@@ -38,6 +38,10 @@ const SERVICES = new Deva({
   modules: {},
   func: {},
   methods: {},
+  onReady(data, resolve) {
+    this.prompt('ready');
+    return resolve(data);
+  },
   onError(err) {
     console.log('ERR', err);
   }
