@@ -64,8 +64,8 @@ export default {
   ***************/
   file(packet) {      
     const agent = this.agent();
-    this.zone('services');
-    this.feature('services');
+    this.zone('services', `file:${packet.q.text}`);
+    this.feature('services', `file:${packet.q.text}`);
     this.action('method', `file:${packet.q.text}`);
     this.context('file', packet.q.text);
     return new Promise((resolve, reject) => {
