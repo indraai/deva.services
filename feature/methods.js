@@ -55,14 +55,54 @@ export default {
       })
     });
   },
+  
+  /**************
+  method: file
+  params: packet
+  describe: The view method replays the request to the view function to return
+  a document from the text parameter.
+  ***************/
+  file(packet) {      
+    const agent = this.agent();
+    this.zone('services');
+    this.feature('services');
+    this.action('method', `file:${packet.q.text}`);
+    this.context('file', packet.q.text);
+    return new Promise((resolve, reject) => {
+      this.state('get', packet.q.text);  
+      const {text, meta} = packet.q;
+      const area = meta.params[1] ? meta.params[1] : 'public';
+      const part = meta.params[2] ? meta.params[2].toUpperCase() : 'MAIN';
+      const docName = text.length ? text + '.feecting' : 'main.feecting';
+      const docPath = this.lib.path.join(this.config.dir, area, agent.key, docName);         
+  
+      let doc = this.lib.fs.readFileSync(docPath, 'utf8');
+      doc = doc.split(`::BEGIN:${part}`)[1].split(`::END:${part}`)[0];
+      
+      this.question(`${this.askChr}feecting parse ${doc}`).then(feecting => {
+        this.state('resolve', `view:${packet.q.text}`);
+        return resolve({
+          text: feecting.a.text,
+          html: feecting.a.html,
+          data: feecting.a.data,
+        });
+      }).catch(err => {
+        this.state('reject', `file:${packet.q.text}`);
+        return this.error(err, packet, reject);
+      })
+    });
+  },    
+
   /**************
   method: ask
   params: packet
   describe: this method provides a global ask method to all agents.
   ***************/
   async ask(packet) {
+    this.zone('services');
+    this.feature('services');
     this.context('chat', packet.q.agent.name);
-    this.action('feature', 'chat');
+    this.action('service', 'chat');
     return new Promise((resolve, reject) => {
       if (!this.vars.ask) return resolve('Ask not configured.');
       const askAgent = packet.q.meta.params[1] ? false : true;
