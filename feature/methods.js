@@ -119,11 +119,9 @@ export default {
 
       agent.hash = this.lib.hash(agent.profile);
       client.hash = this.lib.hash(client.profile);
-  
         // get the agent main help file for teir corpus.
       this.state('get', 'chat:help');
       this.help('main', info.dir).then(corpus => {
-        console.log('CORPUS', corpus);
         data.corpus = corpus;
         this.state('get', 'ask:chat');
         return this.question(`${this.askChr}chat relay ${packet.q.text}`, {
