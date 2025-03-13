@@ -64,21 +64,28 @@ export default {
   ***************/
   file(packet) {      
     const agent = this.agent();
-    this.zone('services', `file:${packet.q.text}`);
+    this.zone('services');
     this.feature('services', `file:${packet.q.text}`);
     this.action('method', `file:${packet.q.text}`);
     this.context('file', packet.q.text);
     return new Promise((resolve, reject) => {
       this.state('get', packet.q.text);  
       const {text, meta} = packet.q;
-      const area = meta.params[1] ? meta.params[1] : 'public';
-      const part = meta.params[2] ? meta.params[2].toUpperCase() : 'MAIN';
-      const docName = text.length ? text + '.feecting' : 'main.feecting';
-      const docPath = this.lib.path.join(this.config.dir, area, agent.key, docName);         
-  
-      let doc = this.lib.fs.readFileSync(docPath, 'utf8');
-      doc = doc.split(`::BEGIN:${part}`)[1].split(`::END:${part}`)[0];
       
+      const splitText = text.split(':');
+      const area = meta.params[1] ? meta.params[1] : 'public';
+      const part = splitText[1] ? splitText[1].toUpperCase() : 'MAIN';
+      const docName = splitText[0].length ? splitText[0] + '.feecting' : 'main.feecting';
+      const docPath = this.lib.path.join(this.config.dir, area, agent.key, docName);         
+      
+      let doc;     
+      try {
+        doc = this.lib.fs.readFileSync(docPath, 'utf8');  
+        doc = doc.split(`::BEGIN:${part}`)[1].split(`::END:${part}`)[0];
+      } catch (err) {
+        console.log(err);
+      }
+            
       this.question(`${this.askChr}feecting parse ${doc}`).then(feecting => {
         this.state('resolve', `view:${packet.q.text}`);
         return resolve({
@@ -102,11 +109,9 @@ export default {
     this.zone('services');
     this.feature('services');
     this.context('chat', packet.q.agent.name);
-    this.action('service', 'chat');
+    this.action('services', 'chat');
     return new Promise((resolve, reject) => {
       if (!this.vars.ask) return resolve('Ask not configured.');
-      const askAgent = packet.q.meta.params[1] ? false : true;
-      const text = [];
       const data = {};
       const agent = this.agent();
       const client = this.client();
@@ -117,24 +122,26 @@ export default {
   
         // get the agent main help file for teir corpus.
       this.state('get', 'chat:help');
-      this.help('main', info.dir).then(corpus => {        
+      this.help('main', info.dir).then(corpus => {
+        console.log('CORPUS', corpus);
         data.corpus = corpus;
         this.state('get', 'ask:chat');
         return this.question(`${this.askChr}chat relay ${packet.q.text}`, {
-          model: agent.model || false,
           client: buildProfile(client, 'client'),
           agent: buildProfile(agent, 'agent'),
           corpus,
           max_tokens: this.vars.ask.max_tokens,
           history: this.vars.ask.history.slice(-10),
           memory: agent.key,
-          askAgent,
         });
       }).then(answer => {
-        text.push(`::begin:${agent.key}:${answer.id}`);
-        text.push(answer.a.text);
-        text.push(`::end:${agent.key}:${this.lib.hash(answer.a.text)}`);
         data.chat = answer.a.data.chat;  
+        const text = [
+          `::begin:${agent.key}:${answer.id}`,
+          answer.a.text,
+          `date: ${this.lib.formatDate(Date.now(), 'long', true)}`,
+          `::end:${agent.key}:${this.lib.hash(answer.a.text)}`,
+        ];
   
         // memory event
         this.talk('data:memory', {
@@ -149,12 +156,12 @@ export default {
         this.state('set', 'chat:history');
         this.vars.ask.history.push({
           role: 'user',
-          content: this.lib.trimWords(answer.q.text, 100),
+          content: this.lib.trimWords(answer.q.text, 150),
         });
   
         this.vars.ask.history.push({
           role: answer.a.data.chat.role,
-          content: this.lib.trimWords(answer.a.data.chat.text, 100),
+          content: this.lib.trimWords(answer.a.data.chat.text, 150),
         });
   
         this.state('parse', 'ask:chat');
@@ -163,12 +170,11 @@ export default {
         data.feecting = feecting.a.data;
         this.state('resolve', 'chat');
         return resolve({
-          text: data.chat.text,
+          text: feecting.a.text,
           html: feecting.a.html,
           data,
         });
       }).catch(err => {
-        console.log('CHAT ERROR', err);
         this.state('reject', 'chat');
         return this.error(packet, err, reject);
       });
