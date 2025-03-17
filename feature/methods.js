@@ -110,24 +110,25 @@ export default {
     this.feature('services');
     this.context('chat', packet.q.agent.name);
     this.action('services', 'chat');
+    const data = {};
+    const agent = this.agent();
+    const client = this.client();
+    const info = this.info();
+
+    this.state('get', 'chat:help');
+    const help = await this.help('corpus', info.dir);
+
     return new Promise((resolve, reject) => {
       if (!this.vars.ask) return resolve('Ask not configured.');
-      const data = {};
-      const agent = this.agent();
-      const client = this.client();
-      const info = this.info();
 
-      agent.hash = this.lib.hash(agent.profile);
-      client.hash = this.lib.hash(client.profile);
         // get the agent main help file for teir corpus.
-      this.state('get', 'chat:help');
-      this.help('main', info.dir).then(corpus => {
-        data.corpus = corpus;
+      this.question(`${this.askChr}feecting parse ${help}`).then(corpus => {
+        data.corpus = corpus.a.text;
         this.state('get', 'ask:chat');
         return this.question(`${this.askChr}chat relay ${packet.q.text}`, {
           client: buildProfile(client, 'client'),
           agent: buildProfile(agent, 'agent'),
-          corpus,
+          corpus: corpus.a.text,
           max_tokens: this.vars.ask.max_tokens,
           history: this.vars.ask.history.slice(-10),
           memory: agent.key,
