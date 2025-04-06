@@ -125,7 +125,7 @@ export default {
       this.question(`${this.askChr}feecting parse ${help}`).then(corpus => {
         data.corpus = corpus.a.text;
         this.state('get', 'ask:chat');
-        return this.question(`${this.askChr}chat relay ${packet.q.text}`, {
+        return this.question(`${this.askChr}chat relay ${decodeURIComponent(packet.q.text)}`, {
           client: buildProfile(client, 'client'),
           agent: buildProfile(agent, 'agent'),
           corpus: corpus.a.text,
@@ -136,10 +136,11 @@ export default {
       }).then(answer => {
         data.chat = answer.a.data.chat;  
         const text = [
-          `::begin:${agent.key}:${answer.id}`,
+          `::BEGIN:${agent.key}:${answer.id}`,
           answer.a.text,
           `date: ${this.lib.formatDate(Date.now(), 'long', true)}`,
-          `::end:${agent.key}:${this.lib.hash(answer.a.text)}`,
+          `button[💬 Speak]:${this.askChr}chat speech:${agent.profile.voice} ${encodeURIComponent(answer.a.text)}`,          
+          `::END:${agent.key}:${this.lib.hash(answer)}`,
         ];
   
         // memory event
