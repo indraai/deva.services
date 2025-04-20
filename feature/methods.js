@@ -106,16 +106,16 @@ export default {
   describe: this method provides a global ask method to all agents.
   ***************/
   async ask(packet) {
-    this.zone('services');
-    this.feature('services');
-    this.context('chat', packet.q.agent.name);
-    this.action('services', 'chat');
+    this.zone('services', packet.id);
+    this.feature('services', packet.id);
+    this.context('ask', `${packet.q.agent.name}:${packet.id}`);
+    this.action('services', `ask:${packet.id}`);
     const data = {};
     const agent = this.agent();
     const client = this.client();
     const info = this.info();
 
-    this.state('get', 'chat:help');
+    this.state('get', `corpus:${packet.id}`);
     const help = await this.help('corpus', info.dir);
 
     return new Promise((resolve, reject) => {
@@ -136,24 +136,12 @@ export default {
       }).then(answer => {
         data.chat = answer.a.data.chat;  
         const text = [
-          `::BEGIN:${agent.key}:${answer.id}`,
+          `::begin:${agent.key}:${answer.id}`,
           answer.a.text,
           `date: ${this.lib.formatDate(Date.now(), 'long', true)}`,
-          `button[💬 Speak]:${this.askChr}chat speech:${agent.profile.voice} ${encodeURIComponent(answer.a.text)}`,          
-          `::END:${agent.key}:${this.lib.hash(answer)}`,
+          `::end:${agent.key}:${this.lib.hash(answer)}`,
         ];
-  
-        // memory event
-        this.talk('data:memory', {
-          id: answer.a.data.chat.id,
-          client,
-          agent,
-          q: packet.q.text,
-          a: answer.a.data.chat.text,
-          created: Date.now(),
-        });
-  
-        this.state('set', 'chat:history');
+        this.state('set', `history:${packet.id}`);
         this.vars.ask.history.push({
           role: 'user',
           content: this.lib.trimWords(answer.q.text, 150),
@@ -164,11 +152,11 @@ export default {
           content: this.lib.trimWords(answer.a.data.chat.text, 150),
         });
   
-        this.state('parse', 'ask:chat');
+        this.state('parse', `ask:${packet.id}`);
         return this.question(`${this.askChr}feecting parse ${text.join('\n')}`);
       }).then(feecting => {
         data.feecting = feecting.a.data;
-        this.state('resolve', 'chat');
+        this.state('resolve', `ask:${packet.id}`);
         return resolve({
           text: feecting.a.text,
           html: feecting.a.html,
