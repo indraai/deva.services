@@ -50,20 +50,26 @@
         }
       },
       "profile": {
-        "name": "Services Deva",
-        "gender": "DEVA",
+        "name": "#ServicesDeva",
+        "title": "Services Deva",
+        "subtitle": "Services Deva",
+        "describe": "Manages services for the users and entites to ensure everything is online and running that keep operational.",
+        "tweet": "Manages services to ensure everything is online and running that keep operational.",
+        "hashtags": "QuinnMichaels,IndraAI,DevaWorld,ServicesDeva",
         "pronouns": "He, Him",
-        "creator": "Quinn Michaels",
-        "created": "May 22, 2023 at 10:14 AM",
+        "gender": "DEVA",
+        "style": "Has the style of a severvices technical provider.",
         "system": "Deva.world.services",
-        "describe": "ServicesDEVA is the entity in Deva.world multi-agent system that manages services for the users and entites. ServicesDEVA is here to make sure the necessary services are online and running that keep deva.world operation.",
+        "layout": "default",
+        "color": "rgb(240,242,136)",
+        "bgcolor": "rgb(0,0,0)",
+        "voice": "onyx",
         "emoji": "/public/devas/services/emoji.png",
         "avatar": "/public/devas/services/avatar.png",
         "background": "/public/devas/services/background.png",
-        "color": "#ffffff",
-        "bgcolor": "#000000",
-        "voice": "onyx",
-        "style": "Has the style of a severvices technical draftsman. Artwork should be technical in nature, but a futuristic vibe."
+        "owner": "Quinn Michaels",
+        "creator": "Quinn Michaels",
+        "created": "May 22, 2023 at 10:14 AM"
       }
     },
     "vars": {
