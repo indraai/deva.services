@@ -64,9 +64,10 @@
         "color": "rgb(240,242,136)",
         "bgcolor": "rgb(0,0,0)",
         "voice": "onyx",
-        "emoji": "/public/devas/services/emoji.png",
-        "avatar": "/public/devas/services/avatar.png",
-        "background": "/public/devas/services/background.png",
+        "emoji": "/assets/devas/services/emoji.png",
+        "avatar": "/assets/devas/services/avatar.png",
+        "image": "/assets/devas/services/image.png",
+        "background": "/assets/devas/services/background.png",
         "owner": "Quinn Michaels",
         "creator": "Quinn Michaels",
         "created": "May 22, 2023 at 10:14 AM"
