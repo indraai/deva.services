@@ -27,7 +27,7 @@
   },
   "homepage": "https://deva.space/devas/services",
   "dependencies": {
-    "@indra.ai/deva": "^1.5.35"
+    "@indra.ai/deva": "^1.5.37"
   },
   "data": {
     "agent": {
@@ -50,10 +50,11 @@
         }
       },
       "profile": {
-        "name": "#ServicesDeva",
+        "name": "Services Deva",
+        "hashtag": "#ServicesDeva",
         "title": "Services Deva",
         "subtitle": "Services Deva",
-        "describe": "Manages services for the users and entites to ensure everything is online and running that keep operational.",
+        "describe": "Manages services for the users and entites to ensure everything is online and running.",
         "tweet": "Manages services to ensure everything is online and running that keep operational.",
         "hashtags": "QuinnMichaels,IndraAI,DevaWorld,ServicesDeva",
         "pronouns": "He, Him",
