@@ -1,3 +1,8 @@
+"use strict";
+// Copyright ©2025 Quinn A Michaels; All rights reserved. 
+// Legal Signature Required For Lawful Use.
+// Distributed under VLA:59232188337076320338 LICENSE.md
+
 function buildProfile(entity, type='assistant') {
   const _profile = [];
   _profile.push(`::begin:${type}:${entity.id}`);
