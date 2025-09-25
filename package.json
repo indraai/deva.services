@@ -47,14 +47,17 @@
   "keywords": [
     "Services",
     "Deva",
+    "Services Deva",
     "Deva.world",
     "Deva.cloud",
-    "Deva.space"
+    "Deva.space",
+    "Quinn A Michaels",
+    "Inside The Net, Inc."
   ],
   "bugs": {
     "url": "https://github.com/indraai/deva.services/issues"
   },
-  "homepage": "https://deva.space/devas/services",
+  "homepage": "https://indra.ai",
   "dependencies": {
     "@indra.ai/deva": "^1.6.102"
   },
@@ -64,17 +67,17 @@
       "key": "services",
       "prompt": {
         "emoji": "🛠️",
-        "text": "Services",
+        "text": "#services",
         "colors": {
           "label": {
-            "R": 163,
-            "G": 163,
-            "B": 168
+            "R": 164,
+            "G": 255,
+            "B": 83
           },
           "text": {
-            "R": 240,
-            "G": 242,
-            "B": 136
+            "R": 255,
+            "G": 83,
+            "B": 49
           }
         }
       },
@@ -95,14 +98,14 @@
         "color": "rgb(240,242,136)",
         "bgcolor": "rgb(0,0,0)",
         "voice": "onyx",
-        "emoji": "/assets/devas/services/emoji.png",
-        "avatar": "/assets/devas/services/avatar.png",
-        "image": "/assets/devas/services/image.png",
-        "background": "/assets/devas/services/background.png",
-        "owner": "Quinn Michaels",
-        "creator": "Quinn Michaels",
-        "created": "May 22, 2023 at 10:14 AM",
-        "copyright": "Copyright ©2025 Quinn A Michaels; All rights reserved."
+        "emoji": "/assets/emoji.png",
+        "avatar": "/assets/avatar.png",
+        "image": "/assets/image.png",
+        "background": "/assets/background.png",
+        "owner": "Quinn A Michaels",
+        "creator": "Quinn A Michaels",
+        "copyright": "Copyright ©2025 Quinn A Michaels; All rights reserved.",
+        "created": "May 22, 2023 at 10:14 AM"
       }
     },
     "vars": {
