@@ -117,34 +117,35 @@ export default {
   describe: this method provides a global ask method to all agents.
   ***************/
   async ask(packet) {
-    this.zone('services', packet.id);
-    this.feature('services', packet.id);
-    this.context('ask', `${packet.q.agent.name}:${packet.id}`);
-    this.action('services', `ask:${packet.id}`);
+    this.zone('services', packet.id.uid);
+    this.feature('services', packet.id.uid);
+    this.context('ask', `${packet.q.agent.name}:${packet.id.uid}`);
+    this.action('services', `ask:${packet.id.uid}`);
+    this.state('services', `ask:${packet.id.uid}`);
     const data = {};
     const agent = this.agent();
     const client = this.client();
     const info = this.info();
 
-    this.state('get', `corpus:${packet.id}`);
-    const help = await this.help('corpus', info.dir);
+    this.state('get', `corpus:${packet.id.uid}`);
+    const _corpus = await this.help('corpus', info.dir);
+    const corpus = await this.question(`${this.askChr}feecting parse ${_corpus}`);
 
     return new Promise((resolve, reject) => {
       if (!this.vars.ask) return resolve('Ask not configured.');
 
-        // get the agent main help file for teir corpus.
-      this.question(`${this.askChr}feecting parse ${help}`).then(corpus => {
-        data.corpus = corpus.a.text;
-        this.state('get', 'ask:chat');
-        return this.question(`${this.askChr}chat relay ${decodeURIComponent(packet.q.text)}`, {
-          client: buildProfile(client, 'client'),
-          agent: buildProfile(agent, 'agent'),
-          corpus: corpus.a.text,
-          max_tokens: this.vars.ask.max_tokens,
-          history: this.vars.ask.history.slice(-10),
-          memory: agent.key,
-        });
+      data.corpus = corpus.a.text;
+      this.state('get', 'ask:chat');
+      this.question(`${this.askChr}chat relay ${decodeURIComponent(packet.q.text)}`, {
+        client: buildProfile(client, 'client'),
+        agent: buildProfile(agent, 'agent'),
+        corpus: corpus.a.text,
+        max_tokens: this.vars.ask.max_tokens,
+        history: this.vars.ask.history.slice(-10),
+        memory: agent.key,
       }).then(answer => {
+        console.log('CHAT RELAY ANSWER', Object.keys(answer));
+
         data.chat = answer.a.data.chat;  
         const text = [
           `::begin:${agent.key}:${answer.id}`,
@@ -163,11 +164,11 @@ export default {
           content: this.lib.trimWords(answer.a.data.chat.text, 150),
         });
   
-        this.state('parse', `ask:${packet.id}`);
+        this.state('parse', `ask:${packet.id.uid}`);
         return this.question(`${this.askChr}feecting parse ${text.join('\n')}`);
       }).then(feecting => {
         data.feecting = feecting.a.data;
-        this.state('resolve', `ask:${packet.id}`);
+        this.state('resolve', `ask:${packet.id.uid}`);
         return resolve({
           text: feecting.a.text,
           html: feecting.a.html,

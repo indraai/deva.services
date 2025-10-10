@@ -59,7 +59,7 @@
   },
   "homepage": "https://indra.ai",
   "dependencies": {
-    "@indra.ai/deva": "^1.10.0"
+    "@indra.ai/deva": "^1.11.0"
   },
   "data": {
     "agent": {
@@ -121,29 +121,7 @@
         "label": "👨‍🔧SERVICES",
         "signature": "@Services"
       },
-      "live": {
-        "profile": "services",
-        "max_tokens": 50,
-        "words": 25,
-        "history": [],
-        "max_chats": 10,
-        "page_token": ""
-      },
       "ask": {
-        "max_tokens": 500,
-        "words": 200,
-        "history": []
-      },
-      "reply": {
-        "profile": "services",
-        "max_tokens": 300,
-        "words": 100,
-        "history": []
-      },
-      "comment": {
-        "profile": "services",
-        "max_tokens": 300,
-        "words": 100,
         "history": []
       },
       "art": {
