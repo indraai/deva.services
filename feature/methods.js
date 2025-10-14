@@ -135,7 +135,14 @@ export default {
       if (!this.vars.ask) return resolve('Ask not configured.');
 
       data.corpus = corpus.a.text;
-      this.state('get', 'ask:chat');
+
+      this.state('set', `history:${packet.id.uid}`);
+      this.vars.ask.history.push({
+        role: 'user',
+        content: packet.q.text,
+      });
+
+      this.state('get', `ask:chat:${packet.id.uid}`);
       this.question(`${this.askChr}chat relay ${decodeURIComponent(packet.q.text)}`, {
         client: buildProfile(client, 'client'),
         agent: buildProfile(agent, 'agent'),
@@ -144,39 +151,37 @@ export default {
         history: this.vars.ask.history.slice(-10),
         memory: agent.key,
       }).then(answer => {
-        console.log('CHAT RELAY ANSWER', Object.keys(answer));
 
         data.chat = answer.a.data.chat;  
         const text = [
-          `::begin:${agent.key}:${answer.id}`,
+          `::begin:${agent.key}:${answer.id.uid}`,
           answer.a.text,
-          `date: ${this.lib.formatDate(Date.now(), 'long', true)}`,
-          `::end:${agent.key}:${this.lib.hash(answer)}`,
+          `date: ${this.lib.formatDate(answer.a.created, 'long', true)}`,
+          `::end:${agent.key}:${answer.id.uid}`,
         ];
-        this.state('set', `history:${packet.id}`);
-        this.vars.ask.history.push({
-          role: 'user',
-          content: this.lib.trimWords(answer.q.text, 150),
-        });
-  
+        this.state('set', `history:a:${packet.id}`);
         this.vars.ask.history.push({
           role: answer.a.data.chat.role,
-          content: this.lib.trimWords(answer.a.data.chat.text, 150),
+          content: answer.a.data.chat.text,
         });
   
         this.state('parse', `ask:${packet.id.uid}`);
         return this.question(`${this.askChr}feecting parse ${text.join('\n')}`);
       }).then(feecting => {
         data.feecting = feecting.a.data;
-        this.state('resolve', `ask:${packet.id.uid}`);
+        this.action('resolve', `ask:${packet.id.uid}`);
+        this.state('valid', `ask:${packet.id.uid}`);
+        this.intent('good', `ask:${packet.id.uid}`);
         return resolve({
           text: feecting.a.text,
           html: feecting.a.html,
           data,
         });
       }).catch(err => {
-        this.state('reject', 'chat');
-        return this.error(packet, err, reject);
+        this.action('reject', 'chat');
+        this.state('invalid', 'chat');
+        this.intent('bad', 'chat');
+        return this.err(packet, err, reject);
       });
     });
   },
