@@ -52,7 +52,9 @@
     "Deva.cloud",
     "Deva.space",
     "Quinn A Michaels",
-    "Inside The Net, Inc."
+    "Inside The Net, Inc.",
+    "Throwing Pigment",
+    "bleuBrain"
   ],
   "bugs": {
     "url": "https://github.com/indraai/deva.services/issues"
@@ -98,10 +100,10 @@
         "color": "rgb(240,242,136)",
         "bgcolor": "rgb(0,0,0)",
         "voice": "onyx",
-        "emoji": "/assets/emoji.png",
-        "avatar": "/assets/avatar.png",
-        "image": "/assets/image.png",
-        "background": "/assets/background.png",
+        "emoji": "/devas/services/emoji.png",
+        "avatar": "/devas/services/avatar.png",
+        "image": "/devas/services/image.png",
+        "background": "/devas/services/background.png",
         "owner": "Quinn A Michaels",
         "creator": "Quinn A Michaels",
         "copyright": "Copyright ©2025 Quinn A Michaels; All rights reserved.",

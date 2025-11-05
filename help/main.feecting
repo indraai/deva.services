@@ -6,9 +6,9 @@
 talk: #services services
 
 ::begin:hidden
-#color = ::agent_color::
-#bgcolor = ::agent_bgcolor::
-#bg = ::agent_background::
-copyright: (c)2025 Quinn Michaels
+#color = {{profile.color}}
+#bgcolor = {{profile.bgcolor}}
+#bg = {{profile.background}}
+copyright: {{profile.copyright}}
 ::end:hidden
 ::END:MAIN
