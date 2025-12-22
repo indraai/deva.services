@@ -89,15 +89,20 @@ export default {
       const docName = splitText[0].length ? splitText[0] + '.feecting' : 'main.feecting';
       const docPath = this.lib.path.join(this.config.dir, area, agent.key, docName);         
       
-      let doc;     
+      let doc = false;
       try {
-        doc = this.lib.fs.readFileSync(docPath, 'utf8');  
-        doc = doc.split(`::BEGIN:${part}`)[1].split(`::END:${part}`)[0];
+        const doc_file = this.lib.fs.readFileSync(docPath, 'utf8');  
+        const doc_content = doc_file.split(`::BEGIN:${part}`)[1].split(`::END:${part}`)[0];
+        doc = [
+          `${this.container.begin}:FILE:${packet.id.uid}`,
+          doc_content,
+          `${this.container.end}:FILE:${packet.id.uid}`,          
+        ].join('\n');
       } catch (err) {
         console.log(err);
       }
             
-      this.question(`${this.askChr}feecting parse ${doc}`).then(feecting => {
+      this.question(`${this.askChr}feecting parse ${doc}`, {vars:this.vars}).then(feecting => {
         this.state('resolve', `view:${packet.q.text}`);
         return resolve({
           text: feecting.a.text,
