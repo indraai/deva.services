@@ -38,6 +38,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "latest": "npm i @indra.ai/deva@latest --save",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -61,7 +62,7 @@
   },
   "homepage": "https://indra.ai",
   "dependencies": {
-    "@indra.ai/deva": "^1.32.0"
+    "@indra.ai/deva": "^1.36.0"
   },
   "data": {
     "agent": {
@@ -91,7 +92,7 @@
         "subtitle": "Services Deva",
         "describe": "Manages services for the users and entites to ensure everything is online and running.",
         "tweet": "Manages services to ensure everything is online and running that keep operational.",
-        "hashtags": "QuinnMichaels,IndraAI,DevaWorld,ServicesDeva",
+        "hashtags": "#Quinn #QuinnMichaels #InsideTheNet #IndraAI #DevaWorld #ServicesDeva #ServicesPRIME",
         "pronouns": "He, Him",
         "gender": "DEVA",
         "style": "Has the style of a severvices technical provider.",
@@ -106,7 +107,8 @@
         "background": "/devas/services/background.png",
         "owner": "Quinn A Michaels",
         "creator": "Quinn A Michaels",
-        "copyright": "Copyright ©2025 Quinn A Michaels; All rights reserved.",
+        "warning": "{{prompt.emoji}} {{profile.name}} declares a COMPACT formed among CONSENTING ADULTS, COMPANIES, and ASSOCIATIONS is called an AGREEMENT. Such an AGREEMENT must be OBSERVED both in times of DISTRESS and for ACTS of PIETY. Mutual CONFIDENCE having FIRST been ESTABLISHED by means of SACRED LIBATION, a STIPULATION in WRITING, or by LEGAL COUNCIL, they shall then set about their WORK. ENEMIES, DISSOLUTE, BASHFUL, INDOLENT, TIMID, AVARICIOUS, OVERAGED or very YOUNG PERSONS must not be chosen as INTENDANTS of AFFAIRS. ONE who FAILS in the AGREEMENT, though ABLE to PERFORM it, shall be PUNISHED by CONFISCATION of the ENTIRE PROPERTY. \nowner: {{profile.owner}} \ntags: {{profile.hashtags}}",
+        "copyright": "Copyright ©2000-2026 Quinn A Michaels; All rights reserved.",
         "created": "May 22, 2023 at 10:14 AM"
       }
     },
