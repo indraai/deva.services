@@ -65,25 +65,29 @@ export default {
   a document from the text parameter.
   ***************/
   file(packet) {      
+    const {id,q} = packet;
+    const {text, meta} = q;
     const agent = this.agent();
     this.zone('services');
-    this.feature('services', `file:${packet.q.text}`);
-    this.action('method', `file:${packet.q.text}`);
-    this.context('file', packet.q.text);
+    this.feature('services', `file:${q.text}`);
+    this.action('method', `file:${q.text}`);
+    this.context('file', q.text);
     return new Promise((resolve, reject) => {
-      this.state('get', packet.q.text);  
-      const {text, meta} = packet.q;
       
       const splitText = text.split(':');
       const area = meta.params[1] ? meta.params[1] : 'public';
       const part = splitText[1] ? splitText[1].toUpperCase() : 'MAIN';
       const docName = splitText[0].length ? splitText[0] + '.feecting' : 'main.feecting';
-      const docPath = this.lib.path.join(this.config.dir, area, agent.key, docName);         
-      
+      const docPath = this.lib.path.join(this.config.dir, area, agent.key, docName);               
       let doc = false;
       try {
         const doc_file = this.lib.fs.readFileSync(docPath, 'utf8');  
-        doc = doc_file.split(`::BEGIN:${part}`)[1].split(`::END:${part}`)[0];
+        const doc_content = doc_file.split(`::BEGIN:${part}`)[1].split(`::END:${part}`)[0];
+        doc = [
+          `${this.container.begin}:FILE:${part.toUpperCase()}:${id.uid}`,
+          doc_content,
+          `${this.container.end}:FILE:${part.toUpperCase()}:${id.uid}`,
+        ].join('\n');
       } catch (err) {
         return this.err(err, packet, reject);
       }
