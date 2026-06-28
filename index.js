@@ -1,9 +1,9 @@
 "use strict";
-// Copyright ©2025 Quinn A Michaels; All rights reserved. 
-// Legal Signature Required For Lawful Use.
-// Distributed under VLA:59232188337076320338 LICENSE.md
-
 // Services Deva
+// Copyright ©2000-2026 Quinn America Michaels; All rights reserved.  
+// Legal Signature Required For Lawful Use.  
+// Distributed under VLA:48323281642062318127 LICENSE.md
+// Saturday, June 27, 2026 - 9:54:15 PM
 
 import Deva from '@indra.ai/deva';
 import pkg from './package.json' with {type:'json'};
@@ -28,7 +28,7 @@ const info = {
   VLA: pkg.VLA,
   copyright: pkg.copyright,
 };
-const SERVICES = new Deva({
+const ServicesDeva = new Deva({
   info,
   agent,
   vars,
@@ -61,4 +61,4 @@ const SERVICES = new Deva({
     return reject(err);
   },
 });
-export default SERVICES
+export default ServicesDeva
