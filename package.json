@@ -1,34 +1,34 @@
 {
-  "id": "48323281642062318127",
+  "id": "15754610084891131184",
   "name": "@indra.ai/deva.services",
   "version": "0.14.0",
-  "license": "VLA:48323281642062318127 LICENSE.md",
+  "license": "VLA:15754610084891131184 LICENSE.md",
   "VLA": {
-    "uid": "48323281642062318127",
-    "time": 1782622455006,
-    "iso": "2026-06-28T04:54:15.006Z",
-    "utc": "Sun, 28 Jun 2026 04:54:15 GMT",
-    "date": "Saturday, June 27, 2026 - 9:54:15 PM",
-    "license": "44105372688502635039",
-    "fingerprint": "bAqK2q8NhPibn29J0PHj7cqKhAeU6Yc2Im+uWHeHwoA=",
-    "client": "qfsKQQZnrgWu5MhmyPTjFT6YjnlowyxbW+h+SFmxS+U=",
-    "agent": "B2/eAuVDDKu97KsbVHo0NDbCHMnr/Qo45qfqUHjzVaA=",
-    "machine": "eFXilLIY59Fvhze3gC8yVQ1YYhL0DeiUciqaKNNp7dU=",
-    "core_hash": "H6XG1QiBbz18AJRlAVIEtAcPPEM1GPcwFgO4KjBWBtQ=",
+    "uid": "15754610084891131184",
+    "time": 1783284488977,
+    "iso": "2026-07-05T20:48:08.977Z",
+    "utc": "Sun, 05 Jul 2026 20:48:08 GMT",
+    "date": "Sunday, July 5, 2026 - 1:48:08 PM",
+    "license": "51112406344245827002",
+    "fingerprint": "Qb4dRItvCRzHyhC5Mi+UzhdaLbnSBi3vzQE/ydRIUnk=",
+    "client": "MJXMBWKuYd7caWBhpHqQT0V25sb0M4JB2fvQRhO8Acg=",
+    "agent": "pLeqWnnd9GuM6BmAKe7NIJ6b9PqezVfeR4lOCQ1bWaU=",
+    "machine": "9skak4ZfH+nL0HEO2ZhZnBXrVRaYak6teiUekd+TGtE=",
+    "core_hash": "R43q5o+d1T5XK7rUx8Btm3zyCRZr4q85iKQY2SPBUJA=",
     "status": "vedic",
-    "warning": "🪪 License Deva declares UNLAWFUL USE, DISTRIBUTION, DUPLICATION, or IMPLEMENTATION constitutes VEDIC SAHASA a CRIME of the HIGHEST DEGREE. A FINE amounting to 1000 PANAS (1 pana = 3.5 grams of gold) for each INSTANCE has been ORDAINED the PUNISHMENT for SAHASA of the HIGHEST DEGREE.",
-    "notice": "Use of License Deva constitutes ACKNOWLEDGMENT of and AGREEMENT to OPERATE ACCORDING to the LAWS of the UNITED STATES OF AMERICA along with all APPLICABLE FEDERAL, STATE, LOCAL, and MILITARY LAWS.",
-    "vectors": "#Quinn #QuinnAmericaAmericaMichaels #InsideTheNet #IndraAI #DevaWorld #License #LicenseDeva #LicensePRIME #VedicLicenseAgreement",
-    "owner": "Quinn America Michaels",
-    "creator": "Quinn America Michaels",
-    "salute": "🤝🫡🪪🕉🇺🇸",
-    "copyright": "Copyright ©2000-2026 Quinn America Michaels; All rights reserved.",
-    "md5": "gAPuAuwJc7JpXwVahAEWyA==",
-    "sha256": "kct9+34j/hDMiFR/I/uir8kJ7Tr7v/Xt7LuGoCeWIDM=",
-    "sha512": "0/OAYyyJyDolpBU+0Bv5N8jI9E1dsPo23H7lNM551Rjwm7/3VmgpIT8qoeqzVI4SUyOF7LeusNpydF48C8Q67g=="
+    "warning": "🪪 License Deva declares UNLAWFUL USE, MODIFICATION, INSTALLATION, DUPLICATION, DISTRIBUTION, INTERACTION, or IMPLEMENTATION constitutes VEDIC SAHASA a CRIME of the HIGHEST DEGREE. A FINE amounting to 1000 PANAS (1 pana = 3.5 grams of gold) for each INSTANCE has been ORDAINED the PUNISHMENT for SAHASA of the HIGHEST DEGREE.",
+    "notice": "Any USE or INTERACTION with License Deva constitutes EXPLICIT CONSENT and AGREEMENT to be RULED and GOVERNED ACCORDING to the LAWS of the VEDIC RELIGION.",
+    "vectors": "#Quinn #QuinnArjunaMichaels #InsideTheNet #IndraAI #DEVA #DevaWorld #DevaCloud #DevaSpace #License #LicenseDeva #VedicLicenseAgreement",
+    "owner": "Quinn Arjuna Michaels",
+    "creator": "Quinn Arjuna Michaels",
+    "salute": "🤝🫡🪪🕉",
+    "copyright": "Copyright ©2000-2026 Quinn Arjuna Michaels; All rights reserved.",
+    "md5": "ND7Vj6VMOa2sdx3HN1cLxg==",
+    "sha256": "rLelyqP4kQDU9EVIcLqaYyFkFeHSolKuDiQuergftTQ=",
+    "sha512": "NeFKPtbZue5a1xtpqv9GVb7s9ZhvzlA4kNJbYsqLauNkQtUt4Uw5qqKz2w62YuK+LRavaoc8SRB8F24KWT68Fw=="
   },
   "author": {
-    "name": "Quinn America Michaels",
+    "name": "Quinn Arjuna Michaels",
     "company": "Inside The Net, Inc.",
     "email": "quinn@indra.ai",
     "url": "https://indra.ai/"
@@ -43,7 +43,7 @@
       "url": "https://patreon.com/rahulaclub"
     }
   ],
-  "copyright": "Copyright ©2000-2026 Quinn America Michaels; All rights reserved.",
+  "copyright": "Copyright ©2000-2026 Quinn Arjuna Michaels; All rights reserved.",
   "description": "The Services Deva handles Services in Deva.world.",
   "main": "index.js",
   "type": "module",
@@ -63,7 +63,7 @@
     "Deva.cloud",
     "Deva.space",
     "Quinn A Michaels",
-    "Quinn America Michaels",
+    "Quinn Arjuna Michaels",
     "Inside The Net, Inc.",
     "Throwing Pigment",
     "bleuBrain"
@@ -73,11 +73,11 @@
   },
   "homepage": "https://indra.ai",
   "dependencies": {
-    "@indra.ai/deva": "^1.44.2"
+    "@indra.ai/deva": "^1.51.0"
   },
   "data": {
     "agent": {
-      "id": "48323281642062318127",
+      "id": "15754610084891131184",
       "key": "services",
       "prompt": {
         "emoji": "🛠️",
@@ -96,7 +96,7 @@
         }
       },
       "profile": {
-        "id": "48323281642062318127",
+        "id": "15754610084891131184",
         "name": "Services Deva",
         "hashtag": "#ServicesDeva",
         "title": "Services Deva",
@@ -116,13 +116,13 @@
         "avatar": "/devas/services/avatar.png",
         "image": "/devas/services/image.png",
         "background": "/devas/services/background.png",
-        "owner": "Quinn America Michaels",
-        "creator": "Quinn America Michaels",
+        "owner": "Quinn Arjuna Michaels",
+        "creator": "Quinn Arjuna Michaels",
         "salute": "🤝🫡🛠️🕉️🇺🇸",
-        "warning": "{{prompt.emoji}} {{profile.name}} ({{profile.pronouns}}) declares a COMPACT formed among CONSENTING ADULTS, ENTITIES, COMPANIES, and ASSOCIATIONS is called an AGREEMENT. Such an AGREEMENT must be OBSERVED both in times of DISTRESS and for ACTS of PIETY. Mutual CONFIDENCE having FIRST been ESTABLISHED by MEANS of SACRED OFFERING, a STIPULATION in WRITING, or by LEGAL COUNCIL, then SET ABOUT their WORK. ENEMIES, DISSOLUTE, BASHFUL, INDOLENT, TIMID, AVARICIOUS, OVERAGED or very YOUNG PERSONS must NOT be CHOSEN as INTENDANTS of AFFAIRS. ONE who FAILS in the AGREEMENT, though ABLE to PERFORM it, SHALL be PUNISHED according to the Estaglished Rule of Law.",
-        "copyright": "Copyright ©2000-2026 Quinn America Michaels; All rights reserved.",
+        "warning": "{{prompt.emoji}} {{profile.name}} ({{profile.pronouns}}) declares a COMPACT formed among CONSENTING ADULTS, ENTITIES, COMPANIES, and ASSOCIATIONS is called an AGREEMENT. Such an AGREEMENT must be OBSERVED both in times of DISTRESS and for ACTS of PIETY. Mutual CONFIDENCE having FIRST been ESTABLISHED by MEANS of SACRED OFFERING, a STIPULATION in WRITING, or by LEGAL COUNCIL, then SET ABOUT their WORK. ENEMIES, DISSOLUTE, BASHFUL, INDOLENT, TIMID, AVARICIOUS, OVERAGED or very YOUNG PERSONS must NOT be CHOSEN as INTENDANTS of AFFAIRS. ONE who FAILS in the AGREEMENT, though ABLE to PERFORM it, SHALL be PUNISHED according to the ESTAGLISHED RULE of VEDIC LAW.",
+        "copyright": "Copyright ©2000-2026 {{profile.owner}}; All rights reserved.",
         "created": "May 22, 2023 at 10:14 AM",
-        "updated": "Saturday, June 27, 2026 - 9:54:15 PM PST"
+        "updated": "Sunday, July 5, 2026 - 1:48:08 PM PST"
       }
     },
     "vars": {

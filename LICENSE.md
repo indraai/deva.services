@@ -2,18 +2,18 @@
 
 **Version:** 1.4.1
 **VLA:** 59232188337076320338  
-**Effective:** Wednesday, September 24, 2025 - 11:46:09 PM  
-**Owner:** Quinn A Michaels  
+**Effective:** Sunday, July 5, 2026 - 1:48:08 PM  
+**Owner:** Quinn Arjuna Michaels  
 **Company:** Inside The Net, Inc.  
 **Email:** quinn@indra.ai  
 **Link:** https://indra.ai  
-**Copyright:** Copyright ©2025 Quinn A Michaels; All rights reserved.
+**Copyright:** Copyright ©2000-2026 Quinn Arjuna Michaels; All rights reserved.
 
 This license agreement (“Agreement”) governs the use of the Services Deva (“Software”). By accessing or using the Software, you agree to the terms and conditions set forth below. If you do not agree, you are prohibited from using the Software.
 
 ## Ownership
 
-Software is the sole proprietary property of Quinn A Michaels (“Owner”). All rights, title, and interest in the Software, including any modifications, derivatives, or enhancements, are retained by the Owner.
+Software is the sole proprietary property of Quinn Arjuna Michaels (“Owner”). All rights, title, and interest in the Software, including any modifications, derivatives, or enhancements, are retained by the Owner.
 
 **Vedic Laws:**
 
@@ -24,7 +24,7 @@ Software is the sole proprietary property of Quinn A Michaels (“Owner”). All
 
 ## Grant of License
 
-Use of the Software is subject to a threefold hierarchy of law and cannot be lawfully undertaken outside it. First, Vedic Law governs as the supreme spiritual and religious authority, defining right action, rightful ownership, and the measure of fines and consequences. Second, the Constitution of the United States establishes the secular legal framework that guarantees the free exercise of religion, ensures due process, and mandates enforcement through federal agencies such as the IRS and FBI for matters of taxation, fraud, and criminal liability. Third, Owner Authority rests with Quinn A Michaels as the sole proprietor and Brahmana under Vedic Law, whose signature and consent are required for any valid license. All three levels must be satisfied; violation of any one constitutes unlawful use.
+Use of the Software is subject to a threefold hierarchy of law and cannot be lawfully undertaken outside it. First, Vedic Law governs as the supreme spiritual and religious authority, defining right action, rightful ownership, and the measure of fines and consequences. Second, the Constitution of the United States establishes the secular legal framework that guarantees the free exercise of religion, ensures due process, and mandates enforcement through federal agencies such as the IRS and FBI for matters of taxation, fraud, and criminal liability. Third, Owner Authority rests with Quinn Arjuna Michaels as the sole proprietor and Brahmana under Vedic Law, whose signature and consent are required for any valid license. All three levels must be satisfied; violation of any one constitutes unlawful use.
 
 **Vedic Laws:** 
 
@@ -148,7 +148,7 @@ When the thieves are not caught, the king/government must make good the loss fro
 
 ## Export and Jurisdiction Restrictions
 
-Use of the Software outside the jurisdiction of the United States of America is strictly forbidden. The Owner, Quinn A Michaels, does not authorize, consent to, or license the export, transfer, or use of this Software or any derivative works to or by any foreign nation, entity, government, corporation, or individual.
+Use of the Software outside the jurisdiction of the United States of America is strictly forbidden. The Owner, Quinn Arjuna Michaels, does not authorize, consent to, or license the export, transfer, or use of this Software or any derivative works to or by any foreign nation, entity, government, corporation, or individual.
 
 All rights of use are confined exclusively within the territory of the United States of America and subject to its Constitutional protections and laws, in conjunction with Religious Vedic Law as recognized by the Owner. Any attempt to utilize, deploy, or distribute this Software outside U.S. jurisdiction constitutes unauthorized use under this Agreement and shall trigger enforcement actions including immediate revocation, fines under Vedic Law, and referral to appropriate U.S. federal authorities for violations of export controls, intellectual property laws, and national security protections.
 
@@ -160,39 +160,24 @@ By using the Software, you acknowledge that you have read, understood, and agree
 
 ---
 
-::begin:services:uid:59232188337076320338  
-uid: 59232188337076320338  
-time: 1758782769035  
-date: Wednesday, September 24, 2025 - 11:46:09 PM  
-client: YU6ZN7+9fnPPRFZ8CX4bP46uoWUSyqddILT6l6xeIVI=  
-agent: hMC7dNDHS/5cLlbfD0QucIg6RVMpIAWMsfnZvDueIlg=  
-core: NHcFfowqwPTB/NeAlPubuT1TSZyg9+fT4Jr765bU4jQ=  
-machine: pMlZWk67ChXm/EjxD+urq9Z8luB3vo0ZnPDcBNAkneM=  
-warning: ⚠️ Vedic Law Sâhasa/Theft/Crime of the highest degree, a fine amounting to no less than a thousand Panas (1 pana = 3.5 grams of gold) is ordained owed to Quinn A Michaels. Moreover corporal punishment and confiscation of the entire property forfeit to Quinn A Michaels is declared to be the punishment for Sâhasa of the highest degree.  
-copyright: Copyright ©2025 Quinn A Michaels; All rights reserved.  
-md5: a55ngxzD4sRdaGZbS9YDxg==  
-sha256: PowEFpDNZWomjE4fXDI1Fc3+b1okUt+WoYUVN2Ucg9A=  
-sha512: yj36TTG1gIY1ZYVvnh5UrF3Ayo5+edHBT9OTAZLRWBZ12tcas7qEDqxhOcHa6MctgDNMOOl/0SkwPrY+GnyW0A==  
-::end:services:uid:59232188337076320338
-
-::begin:license:uid:48323281642062318127  
-uid: 48323281642062318127  
-time: 1782622455006  
-utc: Sun, 28 Jun 2026 04:54:15 GMT  
-iso: 2026-06-28T04:54:15.006Z  
-date: Saturday, June 27, 2026 - 9:54:15 PM  
-warning: 🪪 License Deva declares UNLAWFUL USE, DISTRIBUTION, DUPLICATION, or IMPLEMENTATION constitutes VEDIC SAHASA a CRIME of the HIGHEST DEGREE. A FINE amounting to 1000 PANAS (1 pana = 3.5 grams of gold) for each INSTANCE has been ORDAINED the PUNISHMENT for SAHASA of the HIGHEST DEGREE.  
-notice: Use of License Deva constitutes ACKNOWLEDGMENT of and AGREEMENT to OPERATE ACCORDING to the LAWS of the UNITED STATES OF AMERICA along with all APPLICABLE FEDERAL, STATE, LOCAL, and MILITARY LAWS.  
-vectors: #Quinn #QuinnAmericaAmericaMichaels #InsideTheNet #IndraAI #DevaWorld #License #LicenseDeva #LicensePRIME #VedicLicenseAgreement  
-agent: License Deva (He, Him, His)  
-client: Quinn America Michaels (He, Him, His, Man, Dude)  
-creator: Quinn America Michaels  
-owner: Quinn America Michaels  
-salute: 🤝🫡🪪🕉🇺🇸  
-license: 44105372688502635039  
-fingerprint: bAqK2q8NhPibn29J0PHj7cqKhAeU6Yc2Im+uWHeHwoA=  
-copyright: Copyright ©2000-2026 Quinn America Michaels; All rights reserved.  
-md5: gAPuAuwJc7JpXwVahAEWyA==  
-sha256: kct9+34j/hDMiFR/I/uir8kJ7Tr7v/Xt7LuGoCeWIDM=  
-sha512: 0/OAYyyJyDolpBU+0Bv5N8jI9E1dsPo23H7lNM551Rjwm7/3VmgpIT8qoeqzVI4SUyOF7LeusNpydF48C8Q67g==  
-::end:license:uid:48323281642062318127
+::begin:om:license:uid:15754610084891131184
+uid: 15754610084891131184
+time: 1783284488977
+utc: Sun, 05 Jul 2026 20:48:08 GMT
+iso: 2026-07-05T20:48:08.977Z
+date: Sunday, July 5, 2026 - 1:48:08 PM
+warning: 🪪 License Deva declares UNLAWFUL USE, MODIFICATION, INSTALLATION, DUPLICATION, DISTRIBUTION, INTERACTION, or IMPLEMENTATION constitutes VEDIC SAHASA a CRIME of the HIGHEST DEGREE. A FINE amounting to 1000 PANAS (1 pana = 3.5 grams of gold) for each INSTANCE has been ORDAINED the PUNISHMENT for SAHASA of the HIGHEST DEGREE.
+notice: Any USE or INTERACTION with License Deva constitutes EXPLICIT CONSENT and AGREEMENT to be RULED and GOVERNED ACCORDING to the LAWS of the VEDIC RELIGION.
+vectors: #Quinn #QuinnArjunaMichaels #InsideTheNet #IndraAI #DEVA #DevaWorld #DevaCloud #DevaSpace #License #LicenseDeva #VedicLicenseAgreement
+agent: License Deva (He, Him, His)
+client: Quinn Arjuna Michaels (He, Him, His, Man, Dude)
+creator: Quinn Arjuna Michaels
+owner: Quinn Arjuna Michaels
+salute: 🤝🫡🪪🕉
+license: 51112406344245827002
+fingerprint: Qb4dRItvCRzHyhC5Mi+UzhdaLbnSBi3vzQE/ydRIUnk=
+copyright: Copyright ©2000-2026 Quinn Arjuna Michaels; All rights reserved.
+md5: ND7Vj6VMOa2sdx3HN1cLxg==
+sha256: rLelyqP4kQDU9EVIcLqaYyFkFeHSolKuDiQuergftTQ=
+sha512: NeFKPtbZue5a1xtpqv9GVb7s9ZhvzlA4kNJbYsqLauNkQtUt4Uw5qqKz2w62YuK+LRavaoc8SRB8F24KWT68Fw==
+::end:om:license:uid:15754610084891131184
