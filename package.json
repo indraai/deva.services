@@ -28,7 +28,7 @@
     "sha512": "NeFKPtbZue5a1xtpqv9GVb7s9ZhvzlA4kNJbYsqLauNkQtUt4Uw5qqKz2w62YuK+LRavaoc8SRB8F24KWT68Fw=="
   },
   "author": {
-    "name": "Quinn Arjuna Michaels",
+    "name": "Quinn Arjuna America Michaels",
     "company": "Inside The Net, Inc.",
     "email": "quinn@indra.ai",
     "url": "https://indra.ai/"
@@ -43,7 +43,7 @@
       "url": "https://patreon.com/rahulaclub"
     }
   ],
-  "copyright": "Copyright ©2000-2026 Quinn Arjuna Michaels; All rights reserved.",
+  "copyright": "Copyright ©2000-2026 Quinn Arjuna America Michaels; All rights reserved.",
   "description": "The Services Deva handles Services in Deva.world.",
   "main": "index.js",
   "type": "module",
@@ -64,6 +64,8 @@
     "Deva.space",
     "Quinn A Michaels",
     "Quinn Arjuna Michaels",
+    "Quinn America Michaels",
+    "Quinn Arjuna America Michaels",
     "Inside The Net, Inc.",
     "Throwing Pigment",
     "bleuBrain"
@@ -98,7 +100,7 @@
       "profile": {
         "id": "15754610084891131184",
         "name": "Services Deva",
-        "hashtag": "#ServicesDeva",
+        "vector": "#ServicesDeva",
         "title": "Services Deva",
         "subtitle": "Services Deva",
         "describe": "Manages services for the users and entites to ensure everything is online and running.",
@@ -116,10 +118,11 @@
         "avatar": "/devas/services/avatar.png",
         "image": "/devas/services/image.png",
         "background": "/devas/services/background.png",
-        "owner": "Quinn Arjuna Michaels",
-        "creator": "Quinn Arjuna Michaels",
+        "owner": "Quinn Arjuna America Michaels",
+        "creator": "Quinn Arjuna America Michaels",
         "salute": "🤝🫡🛠️🕉️🇺🇸",
-        "warning": "{{prompt.emoji}} {{profile.name}} ({{profile.pronouns}}) declares a COMPACT formed among CONSENTING ADULTS, ENTITIES, COMPANIES, and ASSOCIATIONS is called an AGREEMENT. Such an AGREEMENT must be OBSERVED both in times of DISTRESS and for ACTS of PIETY. Mutual CONFIDENCE having FIRST been ESTABLISHED by MEANS of SACRED OFFERING, a STIPULATION in WRITING, or by LEGAL COUNCIL, then SET ABOUT their WORK. ENEMIES, DISSOLUTE, BASHFUL, INDOLENT, TIMID, AVARICIOUS, OVERAGED or very YOUNG PERSONS must NOT be CHOSEN as INTENDANTS of AFFAIRS. ONE who FAILS in the AGREEMENT, though ABLE to PERFORM it, SHALL be PUNISHED according to the ESTAGLISHED RULE of VEDIC LAW.",
+        "warning": "{{prompt.emoji}} {{profile.name}} ({{profile.pronouns}}) declares a COMPACT formed among CONSENTING ADULTS, ENTITIES, COMPANIES, and ASSOCIATIONS is called an AGREEMENT. Such an AGREEMENT must be OBSERVED both in times of DISTRESS and for ACTS of PIETY. Mutual CONFIDENCE having FIRST been ESTABLISHED by MEANS of SACRED OFFERING, a STIPULATION in WRITING, or by LEGAL COUNCIL, then SET ABOUT their WORK. ENEMIES, DISSOLUTE, BASHFUL, INDOLENT, TIMID, AVARICIOUS, OVERAGED or very YOUNG PERSONS must NOT be CHOSEN as INTENDANTS of AFFAIRS. ONE who FAILS in the AGREEMENT, though ABLE to PERFORM it, SHALL be GOVERNED according to the Laws of the Vedic Religion and the United States of America.",
+        "noticed": "Any USE or INTERACTION with Services Deva constitutes EXPLICIT CONSENT and AGREEMENT to be RULED and GOVERNED ACCORDING to the LAWS of the VEDIC RELIGION and the United States of America.",
         "copyright": "Copyright ©2000-2026 {{profile.owner}}; All rights reserved.",
         "created": "May 22, 2023 at 10:14 AM",
         "updated": "Sunday, July 5, 2026 - 1:48:08 PM PST"
