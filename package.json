@@ -75,7 +75,7 @@
   },
   "homepage": "https://indra.ai",
   "dependencies": {
-    "@indra.ai/deva": "^1.51.0"
+    "@indra.ai/deva": "^1.52.1"
   },
   "data": {
     "agent": {
@@ -105,7 +105,7 @@
         "subtitle": "Services Deva",
         "describe": "Manages services for the users and entites to ensure everything is online and running.",
         "tweet": "Manages services to ensure everything is online and running that keep operational.",
-        "vectors": "#Quinn #QuinnAmericaMichaels #InsideTheNet #ThrowingPigment #bleuBrain #IndraAI #DevaWorld #DevaCloud #DevaSpace #Services #ServicesDeva #ServicesPRIME",
+        "vectors": "#Quinn #QuinnMichaels #QuinnArjunaAmericaMichaels #InsideTheNet #ThrowingPigment #bleuBrain #IndraAI #DevaWorld #DevaCloud #DevaSpace #Services #ServicesDeva",
         "pronouns": "He, Him, His",
         "gender": "DEVA",
         "style": "Has the style of a severvices technical provider.",
